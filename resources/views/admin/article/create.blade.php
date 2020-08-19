@@ -1,0 +1,73 @@
+@extends('admin.layout')
+
+@section('content')
+
+<div class="box">
+  <div class="box-header">
+      <h4 class="box-title pb-3">{{isset($data)?'修改' : '添加'}}栏目</h4>
+      <form method="post" action="{{isset($data)?route('admin.articles.update', $data) : route('admin.articles.store')}}"  enctype="multipart/form-data">
+            <div class="box-body">
+              <x-textinput label="文章标题" type="text" name="title" :value="$data->title??old('title')??''"/>
+              <div class="form-group row">
+                  <label for="" class="col-sm-1 col-form-label">
+                      所属栏目
+                  </label>
+                  <div class="col-sm-8">
+                      <x-categorytree  name="category_id" :selected="$data->category_id??''"/>
+                  </div>
+              </div>
+              <x-file label="封面图" name="cover" :default="$data->cover??''"/>
+              <div id="content_form_input">
+              </div>
+             
+              <x-textinput label="文章来源" type="text" name="source" :value="$data->source??''"/>
+              <x-select name="column_author_id" label="专栏作者" :options="$authors"/>
+              <x-radio label="状态" name="status" :options="[1 => '已发布', 0 => '未发布']" :checked="$data->is_show??1"/>
+              <x-editor label="内容" name="content" :value="$data->article_content??old('content')??''"/>
+                @isset($data)
+                  @method('PUT')
+                @endisset
+              <x-submit />
+            </div>
+      </form>
+  </div>
+</div>  
+
+
+<!-----------------------不同内容类型的表单-------------------------------->
+
+<div id="album_form" style="display:none">
+  <div class="form-group row">
+    <label for="" class="col-sm-1 col-form-label">
+      图片
+    </label>
+    <div class="col-sm-8">
+      <x-uploader />
+    </div>
+  </div>
+</div>
+@stop 
+
+@section('js')
+@parent
+  <script>
+    $("select[name='category_id']").on('change', function() {
+      let id = $(this).val()
+      $.ajax({
+        url:"/admin/columns/"+id,
+        type:'get',
+        success: res => {
+          $("#content_form_input").empty();
+          if(res.identity == 'album') {
+            $("#content_form_input").html($("#album_form").html())
+          }
+        },
+        error:res => {
+          alert(res)
+        }
+      })
+      
+    })
+  </script>
+@stop
+

@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/login', 'Admin\LoginController@showloginForm')->name('admin.showlogin');
+Route::post('admin/login', 'Admin\LoginController@login');
+Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:admin')->group(function() {
+    Route::get('/', 'IndexController@index');
+    Route::resource('/columns', 'ColumnController');
+    Route::get('/{category?}/articles', 'ArticleController@index')->name('article.index');
+    Route::resource('/articles', 'ArticleController');
+    Route::post('/upload', 'UploaderController@store')->name('upload');
+
+
+
+    Route::post('/logout', 'LoginController@logout');
+});

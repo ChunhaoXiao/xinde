@@ -6,7 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $guarded = [];
+    const SEARCH_FIELDS = [
+        'title', 
+        'category_id', 
+        'status', 
+        'source', 
+        'start_time', 
+        'end_time',
+    ];
+
+    protected $fillable = [
+        'title',
+        'cover',
+        'source',
+        'user_id',
+        'column_author_id',
+        'category_id',
+        'views',
+        'status',
+        'is_top',
+        'extra',
+    ];
 
     protected $with = [
         'category.type',
@@ -62,4 +82,40 @@ class Article extends Model
         $relation = $this->category->type->identity;
         return $this->$relation->content??'';
     }
+
+    public function scopeFilter($query, $datas) {
+        $datas = array_filter($datas, 'strlen');
+        if(empty($datas)) {
+            return $query;
+        }
+       
+        foreach($datas as $k => $v) {
+            if(in_array($k, self::SEARCH_FIELDS)) {
+                if($k == 'title') {
+                    $query->where('title', 'like', '%'.$v.'%');
+                }
+                elseif($k == 'start_time') {
+                    $query->where('created_at', '>=', $v);
+                }
+                elseif($k == 'end_time') {
+                    $query->where('created_at', '<=', $v);
+                }
+                else {
+                    $query->where($k, $v);
+                }
+            }
+        }
+        return $query;
+    }
+
+    // public function scopeRange($query, $data) {
+        
+    //     if(!empty($data['start_time'])) {
+    //         $query->where('created_at', '>', $data['start_time']);
+    //     }
+    //     if(!empty($data['end_time'])) {
+    //         $query->where('created_at', '<', $data['end_time']);
+    //     }
+    //     return $query;
+    // }
 }

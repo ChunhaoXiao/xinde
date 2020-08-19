@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'article_id', 'images', 'content', 'max_width'
+    ];
+
+    protected $casts = [
+        'images' => 'array'
+    ];
 }

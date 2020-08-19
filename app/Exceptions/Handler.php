@@ -54,7 +54,8 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
             return response()->json(['message' => '数据不存在'], 404);
         }
-        if($exception instanceof ValidationException) {
+
+        if($exception instanceof ValidationException && !$request->is('admin/*')) {
             return response()->json(['message' => $exception->errors()], 422);
         }
         // if($exception instanceof \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException) {
