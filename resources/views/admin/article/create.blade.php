@@ -17,7 +17,9 @@
                   </div>
               </div>
               <x-file label="封面图" name="cover" :default="$data->cover??''"/>
+
               <div id="content_form_input">
+               
               </div>
              
               <x-textinput label="文章来源" type="text" name="source" :value="$data->source??''"/>
@@ -37,36 +39,61 @@
 <!-----------------------不同内容类型的表单-------------------------------->
 
 <div id="album_form" style="display:none">
-  <div class="form-group row">
-    <label for="" class="col-sm-1 col-form-label">
-      图片
-    </label>
-    <div class="col-sm-8">
-      <x-uploader />
-    </div>
-  </div>
+  
 </div>
-@stop 
+@stop
 
 @section('js')
 @parent
   <script>
+    
     $("select[name='category_id']").on('change', function() {
       let id = $(this).val()
+      const data = @json($data??[]);
+      console.log(data.id)
       $.ajax({
-        url:"/admin/columns/"+id,
+        url:"/admin/form",
+        data:{
+          category_id:id,
+          article_id:data.id,
+        },
         type:'get',
         success: res => {
+          console.log(res)
           $("#content_form_input").empty();
-          if(res.identity == 'album') {
-            $("#content_form_input").html($("#album_form").html())
-          }
+          $("#content_form_input").html(res);
+
+          // if(res.identity == 'album') {
+          //   $("#content_form_input").html($("#album_form").html())
+          // }
         },
         error:res => {
-          alert(res)
+          //alert(res)
+          console.log(res)
         }
       })
       
+    });
+
+    $(function(){
+      $("select[name='category_id']").trigger('change');
+      
+      //alert('aaas')
+      //const data = @json($data??[]);
+      // if(data) {
+      //   console.log(data)
+      //   $.ajax({
+      //     url:"/admin/form/"+data.id,
+
+      //     success:res => {
+      //       console.log(res)
+      //       if(res) {
+      //         $("#content_form_input").empty().html(res)
+      //       }
+           
+      //     }
+      //   })
+      // }
     })
   </script>
 @stop

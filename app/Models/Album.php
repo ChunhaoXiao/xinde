@@ -13,4 +13,10 @@ class Album extends Model
     protected $casts = [
         'images' => 'array'
     ];
+
+    public function getThumbAttribute() {
+        return array_map(function($item){
+            return basename($item);
+        }, $this->images['picture']);
+    }
 }

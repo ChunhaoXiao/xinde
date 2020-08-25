@@ -39,7 +39,14 @@
                 <tr>
                     <td>{{ $v->title }}</td>
                     <td>{{ $v->category->name }}</td>
-                    <td>{{ $v->status == 1? '已发布' : '未发布'}}</td>
+                    <td>
+                    @if($v->status == 1)
+                    <button class="btn btn-xs btn-success">已发布</button>
+                    @else
+                    <button class="btn btn-xs btn-danger">未发布</button>
+                    @endif
+                    
+                    </td>
                     <td>{{ $v->source }}</td>
                     <td>{{ $v-> created_at }}</td>
                     <td>

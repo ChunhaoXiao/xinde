@@ -54,7 +54,8 @@ class ColumnController extends Controller
      */
     public function show(Category $column)
     {
-        return $column->type;
+        //return $column->type;
+        return view('admin.form');
     }
 
     /**
