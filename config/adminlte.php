@@ -254,6 +254,25 @@ return [
             'icon' => 'far fa-newspaper',
         ],
 
+        ['header' => '用戶'],
+        [
+            'text' => '用戶管理',
+            'url' => 'admin/users',
+            'icon' => ''
+        ],
+        ['header' => '商城'],
+        [
+            'text' => '商品管理',
+            'url' => '',
+            'icon' => ''
+        ],
+        [
+            'text' => '訂單管理',
+            'url' => '',
+            'icon' => ''
+        ],
+
+
         // [
         //     'text'        => 'pages',
         //     'url'         => 'admin/pages',
@@ -433,5 +452,21 @@ return [
                 ],
             ],
         ],
+        'editor' => [
+            'active' => true,
+
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/froala_editor.pkgd.min.css'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/froala_editor.pkgd.min.js',
+                ],
+            ]
+        ]
     ],
 ];

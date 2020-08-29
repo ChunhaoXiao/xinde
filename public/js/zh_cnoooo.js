@@ -1,7 +1,7 @@
 /*!
- * froala_editor v3.0.6 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.1 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2019 Froala Labs
+ * Copyright 2014-2020 Froala Labs
  */
 
 (function (global, factory) {
@@ -40,7 +40,7 @@
       // Colors
       'Colors': '颜色',
       'Background': '背景',
-      'Text': '文本',
+      'Text': '字体',
       'HEX Color': '十六进制颜色',
       // Paragraphs
       'Paragraph Format': '段落格式',
@@ -68,7 +68,7 @@
       'Increase Indent': '增加缩进量',
       // Links
       'Insert Link': '插入超链接',
-      'Open in new tab': '在新窗口中打开',
+      'Open in new tab': '在新标签页中打开',
       'Open Link': '打开超链接',
       'Edit Link': '编辑超链接',
       'Unlink': '删除超链接',
@@ -76,7 +76,7 @@
       // Images
       'Insert Image': '插入图片',
       'Upload Image': '上传图片',
-      'By URL': '通过URL',
+      'By URL': '通过 URL',
       'Browse': '浏览',
       'Drop image': '拖入图片',
       'or click': '或点击',
@@ -84,7 +84,7 @@
       'Loading': '加载中',
       'Deleting': '删除中',
       'Tags': '标签',
-      'Are you sure? Image will be deleted.': '图片将会被删除，是否确认删除？',
+      'Are you sure? Image will be deleted.': '图片将会被删除，是否确认？',
       'Replace': '替换',
       'Uploading': '上传中',
       'Loading image': '图片加载中',
@@ -103,7 +103,7 @@
       'Embedded Code': '嵌入代码',
       'Paste in a video URL': '粘贴视频网址',
       'Drop video': '拖入视频',
-      'Your browser does not support HTML5 video.': '您的浏览器不支持HTML5视频。',
+      'Your browser does not support HTML5 video.': '您的浏览器不支持 HTML5 视频。',
       'Upload Video': '上传视频',
       // Tables
       'Insert Table': '插入表格',
@@ -262,46 +262,40 @@
       'The pasted content is coming from a Microsoft Word document. Do you want to keep the format or clean it up?': '粘贴的内容来自微软 Word 文档。你想保留还是清除格式？',
       'Keep': '保留',
       'Clean': '清除',
-      'Word Paste Detected': '检测到粘贴自Word的内容',
+      'Word Paste Detected': '检测到粘贴自 Word 的内容',
       // Character Counter
       'Characters': '字数统计',
       // More Buttons
       'More Text': ' 更多文字',
       'More Paragraph': '更多段落',
-      'More Rich': '更多',
-      'More Misc': '更多选项',
-      'Text Color': '文本颜色',
+      'More Rich': '更多丰富',
+      'More Misc': '更多杂项',
+      'Rounded': '圆角',
+      'Bordered': '边框',
+      'Shadow': '阴影',
+      'Download PDF': '下载PDF',
+      'Text Color': '字体颜色',
       'Background Color': '背景颜色',
-      'Line Height' : '行高',
-      'Default':'默认',
-      'Inline Class':'行内样式',
-      'Code':'代码',
-      'Highlighted':'高亮',
-      'Transparent':'透明',
-      'Lower Alpha':'字母编号（小写）',
-      'Lower Greek':'希腊编号（小写）',
-      'Lower Roman':'古罗马编号（小写）',
-      'Upper Alpha':'字母编码（大写）',
-      'Upper Roman':'古罗马编号（小写）',
-      'Circle':'空心圆',
-      'Disc':'实心圆',
-      'Square':'正方形',
-      'Gray':'灰色',
-      'Bordered':'边框',
-      'Spaced':'间隔',
-      'Uppercase':'大写',
-      'Single':'单倍',
-      'Double':'双倍',
-      'Download PDF':'下载PDF',
-      'Rounded':'圆角',
-      'Shadow':'阴影',
-      'Green':'绿色',
-      'Thick':'加粗',
-      'Dashed Borders':'虚线边框',
-      'Alternate Rows':'隔行换色',
-      'Loading video':'视频加载中'
-      
-      
+      'Inline Class': '内联类',
+      'Highlighted': '高亮',
+      'Transparent': '透明',
+      'Big Red': '大号红',
+      'Small Blue': '小号蓝',
+      'Default': '默认',
+      'Lower Alpha': 'a,b,c...',
+      'Lower Greek': 'α,β,γ...',
+      'Lower Roman': 'i,ii,iii...',
+      'Upper Alpha': 'A,B,C...',
+      'Upper Roman': 'Ⅰ,Ⅱ,Ⅲ...',
+      'Circle': '○ 空心圆',
+      'Disc': '● 实心圆',
+      'Square': '■ 实心方块',
+      'Gray': '灰色',
+      'Spaced': '字母间隙',
+      'Uppercase': '大写',
+      'Line Height': '行高',
+      'Single': '1',
+      'Double': '2'
     },
     direction: 'ltr'
   };
