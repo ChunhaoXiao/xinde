@@ -12,7 +12,8 @@
 <script src="{{ asset('js/file.min.js') }}"></script>
 <script src="{{ asset('js/image.min.js') }}"></script> -->
 <script type="module">
-new FroalaEditor('textarea', {
+ // const identity = "{{$identity??'textarea'}}";
+new FroalaEditor("#editor", {
     language:'zh_cn',
     heightMin: 250,
     fileUploadURL: "{{ route('admin.upload') }}",

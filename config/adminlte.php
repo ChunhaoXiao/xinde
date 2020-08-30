@@ -263,7 +263,7 @@ return [
         ['header' => '商城'],
         [
             'text' => '商品管理',
-            'url' => '',
+            'url' => 'admin/goods',
             'icon' => ''
         ],
         [

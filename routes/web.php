@@ -27,7 +27,8 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:ad
     Route::resource('/articles', 'ArticleController');
     Route::post('/upload', 'UploaderController@store')->name('upload');
     Route::get('/form', 'FormController@show')->name('form');
-
+    Route::resource('/users', 'UserController');
+    Route::resource('/goods', 'GoodsController');
 
     Route::post('/logout', 'LoginController@logout');
 });
