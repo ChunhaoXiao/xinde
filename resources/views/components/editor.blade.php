@@ -1,7 +1,7 @@
 <div class="form-group row">
   <label class="{{ isset($labelcol)?'col-sm-'.$labelcol : 'col-sm-1' }} col-form-label">{{$label??''}}</label>
   <div class="{{ isset($inputcol)? 'col-sm-'.$inputcol : 'col-sm-10'}}">
-    <textarea name="{{$name}}" id="editor" rows="10">{{$value}}</textarea>
+    <textarea name="{{$name}}" id="editor" rows="10">{!! $value !!}</textarea>
   </div>
 </div>
 <!-- <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
