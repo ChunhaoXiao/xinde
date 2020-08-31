@@ -4,82 +4,49 @@
 
 @section('content_header')
     <!-- <h1>首页</h1> -->
+    <h3>用户管理</h3>
 @stop
 
 @section('content')
+<form action="">
+  <div class="form-group row ml-auto justify-content-end">
+    <div class="col-sm-2"><input type="text" class="form-control" placeholder="用户名" name="name" value="{{request()->name??''}}"></div>
+    <div class="col-sm-2"><input type="text" class="form-control" placeholder="邮箱" name="email" value="{{request()->email??''}}"></div>
+    <div class="col-sm-2"><input type="text" class="form-control" placeholder="手机号" name="mobile" value="{{request()->mobile??''}}"></div>
+    <div class="col-sm-1"><button class="btn btn-info">搜索</button></div>
+  </div>
+</form>
+<!-- <p><a href="{{route('admin.goods.create')}}" class="btn btn-info">添加商品</a></p> -->
 <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
-                  <thead>
-                  <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Rendering engine</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Browser</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th></tr>
+                    <thead>
+                    <tr role="row">
+                      <th class="sorting_asc">用户名</th>
+                      <th class="sorting">邮箱</th>
+                      <th class="sorting">手机号</th>
+                      <th class="sorting" style="width: 20%;">注册时间</th>
+                      
+                      <th>操作</th>
+                    </tr>
                   </thead>
                   <tbody>
                   
                   
-                  
-                  <tr role="row" class="odd">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 1.5</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 2.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 3.0</td>
-                    <td>Win 2k+ / OSX.3+</td>
-                    <td>1.9</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1</td>
-                    <td>A</td>
-                  </tr></tbody>
-                  <tfoot>
-                  <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
-                  </tfoot>
+                  @foreach($datas as $v)
+                  <tr role="row">
+                  <td>{{ $v->name }}</td>
+                    <td>{{ $v->email }}</td>
+                    
+                    <td>{{ $v->mobile }}</td>
+                    <td>{{ $v->created_at }}</td>
+                    <td>
+                    <a  href="{{route('admin.users.edit', $v)}}" title="编辑" class="far fa-edit alert-link text-secondary"></a> 
+                  <i title="删除" class="far fa-trash-alt ml-3" data-url="{{route('admin.users.destroy', $v)}}"></i> 
+                    </td>
+                  </tr>
+                  @endforeach
+                  </tbody>
                 </table>
+                <p>{{$datas->withQueryString()->links()}}</p>
 @stop
 
 

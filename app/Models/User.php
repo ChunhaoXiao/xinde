@@ -76,4 +76,19 @@ class User extends Authenticatable
         }
         return $this->carts()->create(['goods_id' => $goods_id, 'quantity' => $quantity]);
     }
+
+    //查找用户
+    public function scopeSearch($query, $data) {
+        $data = array_filter($data, 'strlen');
+        if(empty($data)) {
+            return $query;
+        }
+        $fields = ['name', 'email', 'mobile'];
+        foreach($data as $k => $v) {
+            if(in_array($k, $fields)) {
+                $query->where($k, $v);
+            }
+        }
+        return $query;
+    }
 }
