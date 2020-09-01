@@ -46,4 +46,5 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/order/{order}', 'OrderController@show');
     Route::post('/upload', 'UploadController');
     Route::resource('goods.comments', 'GoodsCommentController');
+    Route::get('/user', 'UserController@show');
 });
