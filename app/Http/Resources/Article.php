@@ -26,7 +26,7 @@ class Article extends JsonResource
             'title' => $this->title,
             'cover' => $this->list_cover,
             //'content' => $this->when($request->article, $this->article_content),
-            'content' => strip_tags($this->article_content),
+            'content' => $this->strip_tags_content($this->article_content),
             'source' => $this->source,
             'created' => $this->created_at->format("Y-m-d"),
             'images' => $this->when($this->category->type->identity == 'album' && $request->article, json_decode($this->album->images)),
@@ -35,5 +35,9 @@ class Article extends JsonResource
             'category_id' => $this->category->id,
         ];
         
+    }
+
+    private function strip_tags_content($text) {
+        return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
     }
 }
