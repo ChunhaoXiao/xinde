@@ -108,6 +108,10 @@ class Article extends Model
         return $query;
     }
 
+    public function strip_tags_content($text) {
+        return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+    }
+
     // public function scopeRange($query, $data) {
         
     //     if(!empty($data['start_time'])) {
