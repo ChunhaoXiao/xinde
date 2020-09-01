@@ -113,7 +113,10 @@ class Article extends Model
     }
 
     public function getStripedContentAttribute() {
-        return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $this->article_content);
+        $data = strip_tags($this->article_content);
+        $data = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $data);
+        return $data;
+       // return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $this->article_content);
     }
 
     // public function scopeRange($query, $data) {
