@@ -112,6 +112,10 @@ class Article extends Model
         return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
     }
 
+    public function getStripedContentAttribute() {
+        return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $this->article_content);
+    }
+
     // public function scopeRange($query, $data) {
         
     //     if(!empty($data['start_time'])) {
