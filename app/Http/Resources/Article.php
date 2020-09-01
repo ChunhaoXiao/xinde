@@ -37,7 +37,4 @@ class Article extends JsonResource
         
     }
 
-    // private function strip_tags_content($text) {
-    //     return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
-    // }
 }
