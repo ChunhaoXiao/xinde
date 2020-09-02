@@ -34,4 +34,9 @@ class Category extends Model
     public function canNotDelete() {
         return $this->subcates()->exists() || $this->articles()->exists();
     }
+
+    public function toparticle() {
+      
+        return $this->hasOne(Article::class, 'category_id')->latest();
+    }
 }

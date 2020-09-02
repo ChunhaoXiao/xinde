@@ -65,17 +65,19 @@ class Article extends Model
 
     //获取文章列表页封面
     public function getListCoverAttribute($v) {
-        if($this->category->content_type_id == 1) {
-            return asset('storage/'.$this->cover);
-        }
+        return asset('storage/'.$this->cover);
+        // if($this->category->content_type_id == 1) {
+        //     return asset('storage/'.$this->cover);
+        // }
 
-        if($this->category->content_type_id == 2) {
-            $images = json_decode($this->album->images, true);
-            return array_map(function($item) {
-                $item['picture'] = asset('storage/'.$item['picture']); 
-                return $item;
-            }, array_slice($images, 0, 3));
-        }
+        // if($this->category->content_type_id == 2) {
+        //     //$images = json_decode($this->album->images, true);
+        //     $images = $this->album->images['picture']??[];
+        //     return array_map(function($item) {
+        //         $item['picture'] = asset('storage/'.$item['picture']); 
+        //         return $item;
+        //     }, array_slice($images, 0, 3));
+        // }
     }
 
     public function getArticleContentAttribute($v) {
