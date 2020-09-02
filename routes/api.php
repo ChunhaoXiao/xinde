@@ -22,7 +22,7 @@ Route::post('/login', 'AuthController@login');
 
 Route::post('/reg', 'AuthController@store');
 
-Route::get('categories', 'CategoryController@index');
+Route::get('categories/{category_id?}', 'CategoryController@index');
 Route::get('/{category}/articles', 'ArticlesController@index');
 Route::get('articles/{article}', 'ArticlesController@show');
 //Route::resource('{article}/comment', 'ArticleCommentController', ['middleware' => ['store' => 'auth:api']])->shallow();

@@ -29,6 +29,7 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:ad
     Route::get('/form', 'FormController@show')->name('form');
     Route::resource('/users', 'UserController');
     Route::resource('/goods', 'GoodsController');
+    Route::resource('/order', 'OrderController');
 
     Route::post('/logout', 'LoginController@logout');
 });

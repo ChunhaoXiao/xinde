@@ -268,7 +268,7 @@ return [
         ],
         [
             'text' => '訂單管理',
-            'url' => '',
+            'url' => 'admin/order',
             'icon' => ''
         ],
 

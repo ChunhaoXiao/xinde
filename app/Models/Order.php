@@ -19,7 +19,12 @@ class Order extends Model
 
     protected $with = [
         'order_details.goods',
+        'user',
         //'address'
+    ];
+
+    protected $withCount = [
+        'order_details'
     ];
 
     public function user() {
