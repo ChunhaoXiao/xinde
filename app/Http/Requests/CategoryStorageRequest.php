@@ -24,7 +24,9 @@ class CategoryStorageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('categories')->ignore($this->column)],
+            'name' => ['required', Rule::unique('categories')->where(function($query){
+                return $query->whereNull('parent_id')->orWhere('parent_id', $this->parent_id);
+            })->ignore($this->column)],
             'content_type_id' => 'required|exists:content_types,id',
             'icon' => 'nullable|mimes:jpeg,bmp,png',
         ];
