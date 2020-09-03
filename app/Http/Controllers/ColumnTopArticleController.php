@@ -9,7 +9,7 @@ use App\Http\Resources\Article as ArticleResource;
 class ColumnTopArticleController extends Controller
 {
     public function index() {
-        $datas = Category::with('toparticle')->get();
+        $datas = Category::top()->with('toparticle')->get();
         $res = $datas->pluck('toparticle')->filter()->values();
         //return $res;
         return ArticleResource::collection($res);

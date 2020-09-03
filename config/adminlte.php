@@ -276,12 +276,12 @@ return [
         
         [
             'text' => '微视分类',
-            'url' => '',
+            'url' => 'admin/microvideocategory',
             'icon' => '',
         ],
         [
             'text' => '视频管理',
-            'url' => '',
+            'url' => 'admin/microvideo',
             'icon' => '',
         ],
         ['header' => '问答'],
