@@ -14,7 +14,8 @@ class RemoveNameUniqueForCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('name')->unique(false)->change();
+            //$table->string('name')->unique(false)->change();
+            $table->dropUnique('categories_name_unique');
         });
     }
 
