@@ -122,9 +122,15 @@ class Article extends Model
         return $data;
     }
 
-    public function scopeTop() {
-        return $this->where('is_top', 1);
+    public function scopeTop($query) {
+        return $query->where('is_top', 1);
     }
+
+    public function scopeSwiper($query) {
+        return $query->where('is_swiper', 1);
+    }
+
+    
 
     // public function scopeRange($query, $data) {
         

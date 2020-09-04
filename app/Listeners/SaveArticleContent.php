@@ -28,6 +28,9 @@ class SaveArticleContent
     {
         $article = $event->article;
         $relation = $article->category->type->identity;
+        if($article->is_recommend) {
+            
+        }
         $article->$relation()->updateOrCreate(['article_id' => $article->id],$article->extra);
     }
 }

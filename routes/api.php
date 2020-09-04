@@ -31,7 +31,7 @@ Route::get("/adv/{pos}", 'AdvertisementController@show');
 Route::get('goods/{type}', 'GoodsController@index')->where('type', '[A-Za-z]+');
 Route::get('/goods/{goods}', 'GoodsController@show');
 Route::get('/toparticles', 'ColumnTopArticleController@index');
-Route::get('/top/{category}', 'TopArticleController@index');
+Route::get('/top/{category}/{type}', 'TopArticleController@index');
 Route::get('/goods/{goods}/comments', 'GoodsCommentController@index');
 Route::middleware('auth:api')->group(function(){
     Route::post('{type}/like/{id}', 'LikeController@store');
