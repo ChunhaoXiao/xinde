@@ -31,6 +31,10 @@ class Category extends Model
         return $query->whereNull('parent_id');
     }
 
+    public function scopeActive($query) {
+        return $query->where('is_show', 1);
+    }
+
     public function canNotDelete() {
         return $this->subcates()->exists() || $this->articles()->exists();
     }
