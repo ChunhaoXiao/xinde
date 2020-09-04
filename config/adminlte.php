@@ -253,6 +253,11 @@ return [
             'url'  => 'admin/articles',
             'icon' => 'far fa-newspaper',
         ],
+        [
+            'text' => '专栏作者',
+            'url'  => 'admin/authors',
+            'icon' => 'fas fa-pencil-alt',
+        ],
 
         ['header' => '用戶'],
         [

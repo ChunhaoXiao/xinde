@@ -25,6 +25,20 @@
               <x-textinput label="文章来源" type="text" name="source" :value="$data->source??''"/>
               <x-select name="column_author_id" label="专栏作者" :options="$authors"/>
               <x-radio label="状态" name="status" :options="[1 => '已发布', 0 => '未发布']" :checked="$data->is_show??1"/>
+              
+              <div class="row pb-3">
+
+                <label for="" class="col-sm-1">选项</label>
+                <div class="col-sm-3">
+                 <div class="row">
+                   <div class="col-sm"> <x-scheckbox label="置顶" name="is_top" :checked="isset($data) && $data->is_top == 1?'checked':''"/> </div>
+                   <div class="col-sm"> <x-scheckbox label="推荐" name="is_recommend" :checked="isset($data) && $data->is_recommend == 1?'checked':''"/> </div>
+                   <div class="col-sm"> <x-scheckbox label="轮播图" name="is_swiper" :checked="isset($data) && $data->is_swiper == 1?'checked':''"/> </div>
+                 </div>
+                </div>
+
+              </div>
+
               <x-editor label="内容" name="content" :value="$data->article_content??old('content')??''"/>
                 @isset($data)
                   @method('PUT')

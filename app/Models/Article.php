@@ -26,6 +26,8 @@ class Article extends Model
         'status',
         'is_top',
         'extra',
+        'is_recommend',
+        'is_swiper',
     ];
 
     protected $with = [

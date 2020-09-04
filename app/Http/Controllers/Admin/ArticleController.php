@@ -94,6 +94,11 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, Article $article)
     {
         $datas = $request->all();
+        foreach(['is_top', 'is_recommend', 'is_swiper'] as $v) {
+            if(!isset($datas[$v])) {
+                $datas[$v] = 0;
+            }
+        }
         $article->update($datas);
         $article->fill(['extra' => $datas]);
         event(new ArticleSaved($article));
