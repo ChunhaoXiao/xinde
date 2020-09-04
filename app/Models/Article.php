@@ -122,6 +122,10 @@ class Article extends Model
         return $data;
     }
 
+    public function scopeTop() {
+        return $this->where('is_top', 1);
+    }
+
     // public function scopeRange($query, $data) {
         
     //     if(!empty($data['start_time'])) {

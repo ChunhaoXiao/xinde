@@ -23,7 +23,7 @@
                     <td>{{$v->name}}</td>
                     <td>@if(!empty($v->avatar)) <img src="{{asset('storage/'.$v->avatar)}}" alt="" width="50" height="50">  @endif</td>
                     <td class="w-25">{{$v->introduction}}</td>
-                    <td>0</td>
+                    <td>{{ $v->articles_count }}</td>
                     <td>{{$v->created_at}}</td>
                     <td class="text-center">
                     <a  href="{{route('admin.authors.edit', $v)}}" title="编辑" class="far fa-edit alert-link text-secondary"></a> 
