@@ -33,6 +33,7 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:ad
     Route::resource('/microvideocategory', 'MicroVideoCategoryController');
     Route::resource('/microvideo', 'MicroVideoController');
     Route::resource('/authors', 'AuthorController');
+    Route::resource('/advertisement', 'AdvertisementController');
 
     Route::post('/logout', 'LoginController@logout');
 });

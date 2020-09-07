@@ -130,6 +130,13 @@ class Article extends Model
         return $query->where('is_swiper', 1);
     }
 
+    // public function scopeAllArticles($category_id) {
+    //     $category = Category::find($category_id);
+    //     if($category->subcates()->exists()) {
+
+    //     }
+    // }
+
     
 
     // public function scopeRange($query, $data) {

@@ -21,7 +21,7 @@ class Advertisement extends JsonResource
         return [
             'position' => $this->position->name,
             'mark' => $this->position->mark,
-            'content' => $this->content,
+            'content' => asset('storage/'.$this->content),
             'link' => $this->link,
         ];
     }

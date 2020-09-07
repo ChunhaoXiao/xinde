@@ -1,14 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\AdvertisementPosition;
-use App\Http\Resources\Advertisement as AdvertisementResource;
+use Illuminate\Support\Facades\View;
 
 class AdvertisementController extends Controller
 {
+    public function __construct()
+    {
+        $postions = AdvertisementPosition::pluck('name', 'id');
+        View::share('positions', $postions);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,8 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Advertisement::latest()->get();
+        return view('admin.advertisement.index', ['datas' => $datas]);
     }
 
     /**
@@ -26,7 +33,7 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.advertisement.create');
     }
 
     /**
@@ -37,8 +44,12 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        // dump('aaaa');
-        // dump($request->all());
+        $datas = $request->all();
+        if($request->file('content')) {
+            $datas['content'] = $request->file('content')->store('advertisement');
+        }
+        Advertisement::create($datas);
+        return redirect()->route('admin.advertisement.index');
     }
 
     /**
@@ -47,10 +58,9 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pos)
+    public function show($id)
     {
-        $position = AdvertisementPosition::firstWhere('mark', $pos);
-        return new AdvertisementResource($position->advertisement()->valid()->latest()->first());
+        //
     }
 
     /**

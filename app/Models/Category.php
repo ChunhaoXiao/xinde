@@ -23,6 +23,10 @@ class Category extends Model
         return $this->hasMany(Article::class, 'category_id');
     }
 
+    // public function allArticles() {
+    //     return $this->hasManyThrough(Article::class, Category::class);
+    // }
+
     public function type() {
         return $this->belongsTo(ContentType::class, 'content_type_id');
     }
@@ -40,7 +44,19 @@ class Category extends Model
     }
 
     public function toparticle() {
-      
-        return $this->hasOne(Article::class, 'category_id')->latest();
+        return $this->hasOne(Article::class, 'category_id')->where('is_recommend', 1);
     }
+
+    public function allArticles() {
+        if($this->subcates()->exists()) {
+            $subcates_id = $this->subcates->pluck('id')->toArray();
+            $subcates_id[] = $this->id;
+            $inIds = $subcates_id;
+        }
+        else {
+            $inIds = [$this->id];
+        }
+        return Article::whereIn('category_id', $inIds);
+    }
+
 }

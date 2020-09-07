@@ -306,6 +306,12 @@ return [
             'url' => '',
             'icon' => '',
         ],
+        ['header' => '广告'] ,
+        [
+            'text' => '广告管理',
+            'url' => 'admin/advertisement',
+            'icon' => '',
+        ]
         
 
 
