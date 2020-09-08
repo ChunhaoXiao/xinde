@@ -99,6 +99,10 @@ class ArticleController extends Controller
                 $datas[$v] = 0;
             }
         }
+        
+        if($request->cover) {
+            $datas['cover'] = $request->cover->store('uploads');
+        }
         $article->update($datas);
         $article->fill(['extra' => $datas]);
         event(new ArticleSaved($article));
