@@ -21,10 +21,17 @@ class Album extends Model
     }
 
     public function getAllImagesAttribute() {
+
         $pictures = $this->images['picture']??[];
         if(empty($pictures)) {
             return [];
         }
-        return array_map(function($item){ return asset('storage/'.$item);}, $pictures);
+        foreach($pictures as $k => $v) {
+            $row['path'] = asset('storage/'.$v);
+            $row['text'] = $this->images['text'][$k]??'';
+            $res[] = $row;
+        }
+        return $res;
+        //return array_map(function($item){ return ['path' => asset('storage/'.$item), 'text' => ''];}, $pictures);
     }
 }

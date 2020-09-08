@@ -67,7 +67,7 @@ class Article extends Model
 
     //获取文章列表页封面
     public function getListCoverAttribute($v) {
-        return asset('storage/'.$this->cover);
+        return $this->cover ? asset('storage/'.$this->cover):'';
         // if($this->category->content_type_id == 1) {
         //     return asset('storage/'.$this->cover);
         // }

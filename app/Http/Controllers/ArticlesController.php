@@ -11,7 +11,7 @@ use App\Http\Resources\Article as ArticleResource;
 class ArticlesController extends Controller
 {
     public function index(Category $category) {
-        $articles = $category->articles()->paginate();
+        $articles = $category->articles()->latest()->paginate();
         return new ArticleCollection($articles);
     }
 
