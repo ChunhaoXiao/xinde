@@ -19,4 +19,12 @@ class Album extends Model
             return basename($item);
         }, $this->images['picture']);
     }
+
+    public function getAllImagesAttribute() {
+        $pictures = $this->images['picture']??[];
+        if(empty($pictures)) {
+            return [];
+        }
+        return array_map(function($item){ return asset('storage/'.$item);}, $pictures);
+    }
 }

@@ -29,7 +29,7 @@ class Article extends JsonResource
             'content' => $this->striped_content,
             'source' => $this->source,
             'created' => $this->created_at->format("Y-m-d"),
-            'images' => $this->when($this->category->type->identity == 'album' && $request->article, $this->album->images),
+            'images' => $this->when($this->category->type->identity == 'album', $this->album->all_images),
             'article_type' => $this->category->type->identity,
             'category_name' => $this->category->name,
             'category_id' => $this->category->id,
