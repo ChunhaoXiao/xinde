@@ -25,7 +25,7 @@ class AdvRequest extends FormRequest
     {
         return [
             'position_id' => 'required|exists:advertisement_positions,id',
-            'content' => 'required|image',
+            'content' => 'required',
         ];
     }
 
@@ -34,7 +34,7 @@ class AdvRequest extends FormRequest
         return [
             'position_id.required' => '请选择广告位置',
             'content.required' => '去选择广告图片',
-            'content.image' => '图片格式不正确',
+            //'content.image' => '图片格式不正确',
         ];
     }
 }
