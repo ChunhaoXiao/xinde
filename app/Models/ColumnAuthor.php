@@ -12,7 +12,10 @@ class ColumnAuthor extends Model
         'articles'
     ];
 
+    
     public function articles() {
         return $this->hasMany(Article::class, 'column_author_id');
     }
+
+    //public function 
 }
