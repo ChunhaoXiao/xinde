@@ -16,4 +16,13 @@ class Advertisement extends Model
         //return $query->where('start_time', '<', now())->where('end_time', '>', now());
         return $query->where('end_time', '>', now())->orWhereNull('end_time');
     }
+
+    public function setSortAttribute($v) {
+        $this->attributes['sort'] = intval($v);
+    }
+
+
+    protected $dates = [
+        'start_time', 'end_time'
+    ];
 }

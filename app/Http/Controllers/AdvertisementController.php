@@ -51,8 +51,9 @@ class AdvertisementController extends Controller
     {
         $position = AdvertisementPosition::firstWhere('mark', $pos);
     
-        $data = $position->advertisement()->valid()->latest()->first();
-        return $data?  new AdvertisementResource($data):[];
+        $data = $position->advertisement()->valid()->get();
+        //return $data;
+        return AdvertisementResource::collection($data);
     }
 
     /**

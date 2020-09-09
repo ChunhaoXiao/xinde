@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Advertisement;
 use App\Models\AdvertisementPosition;
 use Illuminate\Support\Facades\View;
-
+use App\Http\Requests\AdvRequest;
 class AdvertisementController extends Controller
 {
     public function __construct()
@@ -42,7 +42,7 @@ class AdvertisementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdvRequest $request)
     {
         $datas = $request->all();
         if($request->file('content')) {
@@ -69,9 +69,9 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Advertisement $advertisement)
     {
-        //
+        return view('admin.advertisement.create', ['data' => $advertisement]);
     }
 
     /**
@@ -81,9 +81,14 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdvRequest $request, Advertisement $advertisement)
     {
-        //
+        $datas = $request->all();
+        if($request->file('content')) {
+            $datas['content'] = $request->file('content')->store('advertisement');
+        }
+        $advertisement->update($datas);
+        return redirect()->route('admin.advertisement.index');
     }
 
     /**
@@ -92,8 +97,9 @@ class AdvertisementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Advertisement $advertisement)
     {
-        //
+        $advertisement->delete();
+        return response()->json(['status' => 0]);
     }
 }

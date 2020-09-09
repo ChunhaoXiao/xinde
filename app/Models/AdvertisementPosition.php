@@ -9,6 +9,6 @@ class AdvertisementPosition extends Model
     protected $guarded = [];
 
     public function advertisement() {
-        return $this->hasOne(Advertisement::class, 'position_id');
+        return $this->hasMany(Advertisement::class, 'position_id')->orderBy('sort');
     }
 }
