@@ -30,7 +30,7 @@ class ArticleController extends Controller
         //$query = $category ? $category->articles() : Article::query();
         //$datas = $query->paginate();
        // $query->filter($request->all())->paginate();
-        $datas = Article::filter($request->query())->latest()->paginate();
+        $datas = Article::filter($request->query())->latest()->paginate(15);
         return view('admin.article.index', ['datas' => $datas]);
     }
 

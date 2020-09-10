@@ -58,7 +58,7 @@
             @endforeach
         </tbody>
     </table>
-
+    {{$datas->withQueryString()->links()}}
       <!-- <div class="row text-center border-bottom font-weight-bold pb-2">
         <div class="col-sm-2">栏目名称</div>
         <div class="col-sm-2">上级栏目</div>
