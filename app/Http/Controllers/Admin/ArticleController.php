@@ -100,8 +100,8 @@ class ArticleController extends Controller
             }
         }
         
-        if($request->cover) {
-            $datas['cover'] = $request->cover->store('uploads');
+        if($request->file('cover')) {
+            $datas['cover'] = $request->file('cover')->store('uploads');
         }
         $article->update($datas);
         $article->fill(['extra' => $datas]);
