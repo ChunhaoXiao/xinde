@@ -33,6 +33,10 @@ class Article extends JsonResource
             'article_type' => $this->category->type->identity,
             'category_name' => $this->category->name,
             'category_id' => $this->category->id,
+            'views' => $this->views,
+            'author' => $this->author->name??'',
+            'author_id' => $this->column_author_id??'',
+            'is_recommend' => $this->is_recommend,
         ];
         
     }

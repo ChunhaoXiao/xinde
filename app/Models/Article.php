@@ -35,6 +35,7 @@ class Article extends Model
         'basic_article',
         'album',
         'conference',
+        'author',
     ];
 
     public function category() {
@@ -63,6 +64,10 @@ class Article extends Model
 
     public function conference_enroll() {
         return $this->hasMany(ConferenceEnroll::class, 'conference_id');
+    }
+
+    public function author() {
+        return $this->belongsTo(ColumnAuthor::class, 'column_author_id')->withDefault();
     }
 
     //获取文章列表页封面
@@ -110,6 +115,10 @@ class Article extends Model
             }
         }
         return $query;
+    }
+
+    public function scopePopular($query) {
+        return $query->orderBy('views', 'desc');
     }
 
     public function strip_tags_content($text) {
