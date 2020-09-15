@@ -37,6 +37,8 @@ Route::get('/author', "AuthorController@index");
 Route::get('author/{author}/articles', 'AuthorArticlesController@index');
 Route::get('/addviews/{article}', 'ArticleViewedController');
 Route::get('/popular/{category?}', 'ArticleRankController@index');
+Route::get('/topauthors', 'TopAuthorController');
+Route::get('/search', 'ArticleSearchController');
 Route::middleware('auth:api')->group(function(){
     Route::post('{type}/like/{id}', 'LikeController@store');
     Route::post('{type}/collect/{id}', 'CollectionController@store');

@@ -14,13 +14,12 @@ class ColumnTopArticleController extends Controller
         $top_categories = Category::top()->get();
         $res = [];
         $top_categories->each(function($item) {
-        	$item->article = $item->allArticles()->orderBy('is_recommend', 'desc')->first();
-        	//$res[] = $item->allArticles()->orderBy('is_recommend', 'desc')->first();
+            $article = $item->allArticles()->orderBy('is_recommend', 'desc')->first();
+            if($article) {
+                $item->article = new ArticleResource($article);
+            }
         });
         
-        $datas = $top_categories->pluck('article');
-
-        //return new ArticleResource($datas[0]);
-        return ArticleResource::collection($datas->filter());
+        return $top_categories;
     }
 }
