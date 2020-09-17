@@ -311,6 +311,15 @@ return [
             'text' => '广告管理',
             'url' => 'admin/advertisement',
             'icon' => '',
+        ],
+        [
+            'header' => '系统',
+            //'icon' => 'fas fa-cog'
+        ],
+        [
+            'text' => '底部导航',
+            'url' => 'admin/us',
+            'icon' => 'fas fa-route',
         ]
         
 

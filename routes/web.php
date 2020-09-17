@@ -34,6 +34,7 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:ad
     Route::resource('/microvideo', 'MicroVideoController');
     Route::resource('/authors', 'AuthorController');
     Route::resource('/advertisement', 'AdvertisementController');
+    Route::resource('/us', 'UsController');
 
     Route::post('/logout', 'LoginController@logout');
 });
