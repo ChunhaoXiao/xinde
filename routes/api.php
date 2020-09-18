@@ -36,7 +36,8 @@ Route::get('/goods/{goods}/comments', 'GoodsCommentController@index');
 Route::get('/author', "AuthorController@index");
 Route::get('author/{author}/articles', 'AuthorArticlesController@index');
 Route::get('/addviews/{article}', 'ArticleViewedController');
-Route::get('/popular/{category?}', 'ArticleRankController@index');
+Route::get('/popular/{category?}', 'ArticleRankController@index'); //阅读量排行
+Route::get('/commentrank/{category?}', 'ArticleCommentRankController');//评论排行
 Route::get('/topauthors', 'TopAuthorController');
 Route::get('/search', 'ArticleSearchController');
 Route::get('/bottomnav', 'BottomNavController@index');
