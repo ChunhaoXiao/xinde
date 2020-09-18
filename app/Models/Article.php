@@ -38,6 +38,10 @@ class Article extends Model
         'author',
     ];
 
+    protected $withCount = [
+        'comments'
+    ];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }

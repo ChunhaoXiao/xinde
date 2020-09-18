@@ -30,6 +30,8 @@ class Article extends JsonResource
             'source' => $this->source,
             'created' => $this->created_at->format("Y-m-d"),
             'images' => $this->when($this->category->type->identity == 'album', $this->album->all_images),
+            'conference_type' => $this->when($this->category->type->identity == 'conference', $this->conference->conference_type??''),
+            'start_time' => $this->when($this->category->type->identity == 'conference', $this->conference->start_date??''),
             'article_type' => $this->category->type->identity,
             'category_name' => $this->category->name,
             'category_id' => $this->category->id,
@@ -37,6 +39,7 @@ class Article extends JsonResource
             'author' => $this->author->name??'',
             'author_id' => $this->column_author_id??'',
             'is_recommend' => $this->is_recommend,
+            'comment_count' => $this->comments_count,
         ];
         
     }

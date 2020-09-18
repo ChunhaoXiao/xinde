@@ -37,4 +37,5 @@ Route::prefix('/admin')->namespace('Admin')->name('admin.')->middleware('auth:ad
     Route::resource('/us', 'UsController');
 
     Route::post('/logout', 'LoginController@logout');
+    Route::resource('articlecomment', 'ArticleCommentController');
 });

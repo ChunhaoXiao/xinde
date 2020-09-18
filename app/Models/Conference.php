@@ -22,4 +22,8 @@ class Conference extends Model
         'enroll_begin_time',
         'enroll_end_time',
     ];
+
+    public function scopeComing($query) {
+        return $query->where('start_date', '>', now())->oldest('start_date');
+    }
 }

@@ -41,6 +41,8 @@ Route::get('/topauthors', 'TopAuthorController');
 Route::get('/search', 'ArticleSearchController');
 Route::get('/bottomnav', 'BottomNavController@index');
 Route::get('/bottomnav/{us}', 'BottomNavController@show');
+Route::get('/conference/{type}', 'ConferenceController@index');
+
 Route::middleware('auth:api')->group(function(){
     Route::post('{type}/like/{id}', 'LikeController@store');
     Route::post('{type}/collect/{id}', 'CollectionController@store');

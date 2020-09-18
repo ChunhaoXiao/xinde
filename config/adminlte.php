@@ -265,6 +265,11 @@ return [
             'url' => 'admin/users',
             'icon' => ''
         ],
+        [
+            'text' => '评论管理',
+            'url' => 'admin/articlecomment',
+            'icon' => ''
+        ],
         ['header' => '商城'],
         [
             'text' => '商品管理',
