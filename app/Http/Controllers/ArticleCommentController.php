@@ -22,7 +22,7 @@ class ArticleCommentController extends Controller
      */
     public function index(Article $article)
     {
-        $comments = $article->comments()->paginate();
+        $comments = $article->comments()->latest()->paginate();
         return ArticleComment::collection($comments);
     }
 
