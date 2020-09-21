@@ -14,7 +14,7 @@ class AddTypeToCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->tinyInteger('type')->default(0);
+            $table->tinyInteger('category_type')->default(0);
         });
     }
 
@@ -26,7 +26,7 @@ class AddTypeToCategories extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('type');
+            $table->dropColumn('category_type');
         });
     }
 }
