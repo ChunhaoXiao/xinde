@@ -22,7 +22,7 @@
               <x-radio label="文章排行排除此栏目" name="popular_exclude" :options="[0 => '否', 1 => '是']" :checked="$data->popular_exclude??0"/>
 
               <x-file label="栏目图标" name="icon" :default="$data->icon??''"/>
-             
+              <x-select label="栏目类型" name="type" :options="['默认', '纯文章', '有二级栏目']" :selected="$data->type??''"/>
                 @isset($data)
                   @method('PUT')
                 @endisset

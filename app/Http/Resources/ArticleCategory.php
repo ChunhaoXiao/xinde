@@ -23,6 +23,7 @@ class ArticleCategory extends JsonResource
             'sort' => $this->sort,
             'is_show' => $this->is_show,
             'article_count' => $this->articles_count,
+            'type' => $this->type,
         ];
     }
 }
