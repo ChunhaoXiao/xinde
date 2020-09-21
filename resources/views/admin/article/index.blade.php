@@ -30,6 +30,7 @@
             <th>标题</th>
             <th>文章分类</th>
             <th>状态</th>
+            <th>阅读量</th>
             <th>文章来源</th>
             <th>发布时间</th>
             <th></th>
@@ -47,6 +48,7 @@
                     @endif
                     
                     </td>
+                    <td>{{$v->views}}</td>
                     <td>{{ $v->source }}</td>
                     <td>{{ $v-> created_at }}</td>
                     <td>
