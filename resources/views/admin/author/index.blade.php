@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{$v->name}}</td>
                     <td>@if(!empty($v->avatar)) <img src="{{asset('storage/'.$v->avatar)}}" alt="" width="50" height="50">  @endif</td>
-                    <td class="w-25">{{$v->introduction}}</td>
+                    <td class="w-25">{{Str::limit($v->introduction, 100)}}</td>
                     <td>{{ $v->articles_count }}</td>
                     <td>{{$v->created_at}}</td>
                     <td class="text-center">
