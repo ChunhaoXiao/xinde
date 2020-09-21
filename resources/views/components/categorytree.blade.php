@@ -4,8 +4,8 @@
     @if(!empty($options))
         
         @foreach($options as $k =>  $v)
-            @if($v->subcates->isEmpty())
-              <option {{ isset($selected) && $v->id == $selected?'selected' : '' }} value="{{$v->id}}">{{$v->name}}</option>
+            @if(!$v->subcates->count())
+              <option {{ isset($selected) && $v->id == $selected?'selected':'' }} value="{{$v->id}}">{{$v->name}}</option>
             @else
 
             <option value="{{$v->id}}">{{$v->name}}</option>

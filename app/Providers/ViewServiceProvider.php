@@ -33,6 +33,8 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer('components.categorytree', function($view) {
+
+            //dump(Category::with('subcates')->get());
             $view->with('options', Category::with('subcates')->get());
         });
 
