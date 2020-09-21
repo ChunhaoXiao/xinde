@@ -5,7 +5,7 @@
         
         @foreach($options as $k =>  $v)
             @if($v->subcates()->doesntExist())
-              <option {{ isset($selected) && $v->id == $selected?'selected': '' }} value="{{$v->id}}">{{$v->name}}</option>
+              <option {{ isset($selected) && ($v->id == $selected)?'selected': '' }} value="{{$v->id}}">{{$v->name}}</option>
             @else
 
             <!-- <option value="{{$v->id}}">{{$v->name}}</option> -->
