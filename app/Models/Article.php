@@ -122,7 +122,7 @@ class Article extends Model
     }
 
     public function scopePopular($query) {
-        return $query->orderBy('views', 'desc');
+        return $query->whereHas('category', function($query){$query->where('popular_exclude', 0);})->orderBy('views', 'desc');
     }
 
     public function strip_tags_content($text) {
