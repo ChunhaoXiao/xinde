@@ -18,6 +18,7 @@ class ArticleComment extends JsonResource
        return [
            'id' => $this->id,
            'user' => $this->user->name,
+           'avatar' => $this->user->avatar,
            'content' => $this->content,
            'created_at' => $this->created_at->format("Y-m-d H:i:s"),
            'like_count' => $this->likes_count,
