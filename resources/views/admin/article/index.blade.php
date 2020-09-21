@@ -38,7 +38,7 @@
         <tbody>
             @foreach($datas as $v)
                 <tr>
-                    <td>{{ $v->title }}</td>
+                    <td>{{ Str::limit($v->title,35) }}</td>
                     <td>{{ $v->category->name }}</td>
                     <td>
                     @if($v->status == 1)
