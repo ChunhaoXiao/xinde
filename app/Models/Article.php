@@ -118,6 +118,14 @@ class Article extends Model
                 }
             }
         }
+        if(isset($datas['sort'])) {
+            $sort = explode('_',$datas['sort']);
+            $sortFields = ['views', 'created'];
+            if(in_array($sort[0], $sortFields)) {
+                $type = in_array($sort[1], ['desc', 'asc'])? $sort[1]:'asc';
+                $query->orderBy($sort[0], $type);
+            }
+        }
         return $query;
     }
 

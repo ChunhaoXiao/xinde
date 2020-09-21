@@ -27,10 +27,10 @@
     <!-- /.box-header -->
     <table class="table table-bordered text-center">
         <thead>
-            <th>标题</th>
+            <th style="width: 25%;">标题</th>
             <th>文章分类</th>
             <th>状态</th>
-            <th>阅读量</th>
+            <th>阅读量<a href="{{route('admin.articles.index', array_merge(request()->query(), ['sort' => 'views_desc']))}}">⬇</a><a href="{{route('admin.articles.index', array_merge(request()->query(), ['sort'=> 'views_asc']))}}">⬆</a></th>
             <th>文章来源</th>
             <th>发布时间</th>
             <th></th>
