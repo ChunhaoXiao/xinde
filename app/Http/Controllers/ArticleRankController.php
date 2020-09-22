@@ -10,6 +10,7 @@ class ArticleRankController extends Controller
 {
     public function index(Request $request, $category = null) {
         $limit = $request->input('limit', 10);
+        
         if(!$category) {
             $articles = Article::popular()->limit($limit)->get();
             return ArticleResource::collection($articles);
