@@ -14,7 +14,7 @@ class ColumnTopArticleController extends Controller
         $top_categories = Category::top()->get();
         $res = [];
         $top_categories->each(function($item) {
-            $article = $item->allArticles()->orderBy('is_recommend', 'desc')->first();
+            $article = $item->allArticles()->orderBy('is_recommend', 'desc')->orderBy('updated_at', 'desc')->first();
             if($article) {
                 $item->article = new ArticleResource($article);
             }

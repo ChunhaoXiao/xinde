@@ -15,7 +15,5 @@ class ConferenceController extends Controller
         return ArticleResource::collection($datas);
     }
 
-    public function show() {
-
-    }
+    
 }

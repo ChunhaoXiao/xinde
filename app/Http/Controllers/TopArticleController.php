@@ -14,7 +14,7 @@ class TopArticleController extends Controller
 
         //}
         //$articles = $category->articles()->$type()->latest()->limit($request->count??4)->get();
-        $articles = $category->allArticles()->$type()->latest()->limit($request->count??4)->get();
+        $articles = $category->allArticles()->$type()->latest('updated_at')->limit($request->count??4)->get();
         return ArticleResource::collection($articles);
     }
 }
