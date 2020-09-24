@@ -19,7 +19,9 @@ class ColumnTopArticleController extends Controller
                 $item->article = new ArticleResource($article);
             }
         });
-        
+        $top_categories->filter(function($item){
+            return !empty($item->article);
+        });
         return $top_categories;
     }
 }

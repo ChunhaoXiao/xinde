@@ -26,4 +26,8 @@ class Conference extends Model
     public function scopeComing($query) {
         return $query->where('start_date', '>', now())->oldest('start_date');
     }
+
+    public function scopePassed($query) {
+        return $query->where('start_date', '<', now())->latest();
+    }
 }
